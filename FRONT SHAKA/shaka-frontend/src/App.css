@@ -1,42 +1,182 @@
+:root {
+  color-scheme: light dark;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #0f172a;
+  background-color: #f8fafc;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(56, 189, 248, 0.15));
+  min-height: 100vh;
+}
+
 #root {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.register-layout {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: start;
+}
+
+.register-card {
+  background: #ffffff;
+  border-radius: 20px;
   padding: 2rem;
-  text-align: center;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.register-card header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #1e293b;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.subtitle {
+  margin: 0.25rem 0 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.register-form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+
+.field span {
+  font-weight: 600;
+}
+
+.field input,
+.field select {
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+.submit-button {
+  border: none;
+  border-radius: 12px;
+  padding: 0.85rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.submit-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+}
+
+.submit-button:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+}
+
+.status-message {
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  display: grid;
+  gap: 0.5rem;
+  word-break: break-word;
+}
+
+.status-message.success {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: #166534;
+}
+
+.status-message.error {
+  background: rgba(248, 113, 113, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  color: #b91c1c;
+}
+
+.status-message .token {
+  background: rgba(15, 23, 42, 0.05);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  font-family: 'Fira Code', 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 0.85rem;
+}
+
+.helper-panel {
+  background: rgba(15, 23, 42, 0.85);
+  color: #f8fafc;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+  display: grid;
+  gap: 1rem;
+}
+
+.helper-panel h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.helper-content {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.helper-panel code,
+.helper-panel pre {
+  background: rgba(148, 163, 184, 0.15);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-family: 'Fira Code', 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.helper-panel pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  #root {
+    padding: 2rem 1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .register-card,
+  .helper-panel {
+    padding: 1.5rem;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
